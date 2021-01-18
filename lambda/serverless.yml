@@ -19,8 +19,7 @@ functions:
       - http:
           path: /users
           method: post
-          cors:
-            headers: "*"
+          cors: true
 
   getAllItem:
     handler: handler.getAllItem
@@ -28,8 +27,7 @@ functions:
       - http:
           path: /users
           method: get
-          cors:
-            headers: "*"
+          cors: true
 
 resources:
   - ${file(resources/dynamo-table.yml)}

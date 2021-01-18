@@ -11,33 +11,17 @@ import {
 class App extends Component {
   state = {
     isLoading: false,
-    invoices: [
-      {
-        userId: 1,
-        id: 1,
-        title: "delectus aut autem",
-        completed: false,
-      },
-      {
-        userId: 2,
-        id: 2,
-        title: "delectus aut autem",
-        completed: false,
-      },
-      {
-        userId: 3,
-        id: 3,
-        title: "delectus aut autem",
-        completed: true,
-      },
-      {
-        userId: 4,
-        id: 4,
-        title: "delectus aut autem",
-        completed: false,
-      },
-    ],
+    invoices: [{} as any],
   };
+
+  async componentDidMount() {
+    const res = await fetch(
+      "https://lmhl5i1vuj.execute-api.us-east-1.amazonaws.com/dev/users"
+    );
+    const data = await res.json();
+    console.log(data.Items);
+    this.setState({ invoices: data.Items, isLoading: false });
+  }
 
   remove(id: number): void {
     let updatedInvoices = [...this.state.invoices].filter((i) => i.id !== id);
@@ -53,10 +37,8 @@ class App extends Component {
     let invoices = allInvoices.map((invoice) => {
       return (
         <tr key={invoice.id}>
-          <td>{invoice.userId}</td>
-          <td>{invoice.title}</td>
-          <td>{invoice.completed}</td>
           <td>{invoice.id}</td>
+          <td>{invoice.name}</td>
           <td>
             <Button
               className="btn btn-lg"
