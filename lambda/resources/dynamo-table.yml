@@ -1,0 +1,18 @@
+Resources:
+  myDynamoDBTable: # Logical Id of the resource
+    Type: AWS::DynamoDB::Table
+
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "id"
+          AttributeType: N
+
+      KeySchema:
+        - AttributeName: "id" # Partition Key
+          KeyType: "HASH"
+        
+      TableName: "UserTable"
+
+      ProvisionedThroughput: # Optional, can be skipped
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1

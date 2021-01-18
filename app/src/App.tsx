@@ -28,7 +28,7 @@ class App extends Component {
         userId: 3,
         id: 3,
         title: "delectus aut autem",
-        completed: false,
+        completed: true,
       },
       {
         userId: 4,
