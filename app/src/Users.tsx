@@ -6,7 +6,6 @@ interface User {
   name: string
 }
 
-
 export const Users: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [users, setUsers] = useState<User[]>([]);
